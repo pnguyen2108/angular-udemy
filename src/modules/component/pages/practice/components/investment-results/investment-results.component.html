@@ -1,0 +1,35 @@
+<div
+	[ngClass]="{ 'justify-center items-center': annualData.length === 0 || !annualData }"
+	class="flex flex-col gap-y-3">
+	@if (annualData.length === 0 || !annualData) {
+		<p>Please enter some values and press "Calculate"</p>
+	} @else {
+		<div class="flex flex-col">
+			<button (click)="resetTable()" class="left-0 btn-reset">Reset</button>
+
+			<table>
+				<thead>
+				<tr>
+					<th class="w-20">Year</th>
+					<th class="w-20">Investment value</th>
+					<th class="w-20">Interest (year)</th>
+					<th class="w-20">Total Interest</th>
+					<th class="w-20">Invested Capital</th>
+				</tr>
+				</thead>
+
+				<tbody>
+					@for (item of annualData; track $index) {
+						<tr>
+							<th>{{ item.year }}</th>
+							<th>{{ item.valueEndOfYear | currency }}</th>
+							<th>{{ item.interestEarnedInYear | currency }}</th>
+							<th>{{ item.totalInterest | currency }}</th>
+							<th>{{ item.totalAmountInvested | currency }}</th>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	}
+</div>

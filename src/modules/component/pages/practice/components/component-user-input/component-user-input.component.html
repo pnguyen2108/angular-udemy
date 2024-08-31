@@ -1,0 +1,27 @@
+<form (submit)="onSubmitForm()" [formGroup]="userInputForm">
+	<div class="input-group">
+		<p>
+			<label for="initial-investment">Initial investment</label>
+			<input formControlName="initialInvestment" id="initial-investment" type="number" />
+		</p>
+		<p>
+			<label for="annual-investment">Annual investment</label>
+			<input formControlName="annualInvestment" id="annual-investment" type="number" />
+		</p>
+	</div>
+
+	<div class="input-group">
+		<p>
+			<label for="expected-return">Expected return</label>
+			<input formControlName="expectedReturn" id="expected-return" type="number" />
+		</p>
+		<p>
+			<label for="duration">Duration</label>
+			<input formControlName="duration" id="duration" type="number" />
+		</p>
+	</div>
+
+	<p>
+		<button [disabled]="!this.userInputForm.valid">Calculate</button>
+	</p>
+</form>
